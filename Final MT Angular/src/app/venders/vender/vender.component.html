@@ -1,0 +1,151 @@
+<form
+  name="venderForm"
+  #form="ngForm"
+  autocomplete="off"
+  (ngSubmit)="onSubmit(form)"
+>
+  <!--Employee id -->
+  <div class="form-group">
+    <input
+      type="text"
+      name="venderId"
+      [(ngModel)]="employeeService.formData.venderId"
+    />
+  </div>
+
+  <!--vendername -->
+  <div class="form-group">
+    <label>vender Name</label>
+    <input
+      name="venderName"
+      #venderName="ngModel"
+      [(ngModel)]="venderService.formData.venderName"
+      class="form-control"
+      place
+      holder="Enter Vender Name"
+      minlength="5"
+      maxlength="30"
+      required
+      [ngClass]="{ 'is-invalid': venderName.touched && venderName.invalid }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="venderName.touched && venderName.invalid"
+    >
+      <div *ngIf="venderName.errors.required">Vender Name is Required</div>
+    </div>
+  </div>
+
+  <!--Product Id -->
+  <div class="form-group">
+    <label>Product Id</label>
+    <input
+      name="productId"
+      #productId="ngModel"
+      [(ngModel)]="venderService.formData.productId"
+      class="form-control"
+      place
+      holder="Enter product Id"
+      minlength="2"
+      required
+      [ngClass]="{ 'is-invalid': productId.touched && productId.invalid }"
+    />
+    <div class="validation-error" *ngIf="productId.touched && productId.invalid">
+      <div *ngIf="productId.errors.required">product Id is Required</div>
+    </div>
+  </div>
+  
+  <!--product Name-->
+  <div class="form-group">
+    <label>product Name</label>
+    <input
+      name="productName"
+      #productName="ngModel"
+      [(ngModel)]="venderService.formData.productName"
+      class="form-control"
+      place
+      holder="Enter product Name"
+      maxlength="3"
+      required
+      [ngClass]="{ 'is-invalid': productName.touched && productName.invalid }"
+    />
+    <div class="validation-error" *ngIf="age.touched && productName.invalid">
+      <div *ngIf="productName.errors.required">product Name Required</div>
+    </div>
+  </div>
+
+  <!--Address -->
+  <div class="form-group">
+    <label>Address </label>
+    <input
+      name="address"
+      #address="ngModel"
+      [(ngModel)]="employeeService.formData.address"
+      class="form-control"
+      place
+      holder="Enter Address"
+      maxlength="100"
+      required
+      [ngClass]="{ 'is-invalid': address.touched && address.invalid }"
+    />
+    <div class="validation-error" *ngIf="address.touched && address.invalid">
+      <div *ngIf="address.errors.required">Address is required</div>
+    </div>
+  </div>
+
+  <!--Location -->
+  <div class="form-group">
+    <label>Location</label>
+    <input
+      name="location"
+      #location="ngModel"
+      [(ngModel)]="venderService.formData.location"
+      class="form-control"
+      place
+      holder="Enter location"
+      minlength="5"
+      required
+      [ngClass]="{ 'is-invalid': location.touched && location.invalid }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="location.touched && location.invalid"
+    >
+      <div *ngIf="location.errors.required">location is Required</div>
+    </div>
+  </div>
+
+    <!--Pincode -->
+    <div class="form-group">
+      <label>Pincode</label>
+      <input
+        name="pincode"
+        #pincode="ngModel"
+        [(ngModel)]="venderService.formData.pincode"
+        class="form-control"
+        place
+        holder="Enter pincode"
+        minlength="6"
+        required
+        [ngClass]="{ 'is-invalid': pincode.touched && pincode.invalid }"
+      />
+      <div
+        class="validation-error"
+        *ngIf="pincode.touched && pincode.invalid"
+      >
+        <div *ngIf="pincode.errors.required">pincode is Required</div>
+      </div>
+    </div>
+
+  <!--Submit-->
+  <div class="form-group">
+    <button
+      type="submit"
+      [disabled]="!(form.valid && form.dirty)"
+      class="btn btn-lg btn-primary form-control"
+    >
+      SUBMIT
+    </button>
+  </div>
+</form>
+

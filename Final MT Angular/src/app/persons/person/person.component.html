@@ -1,0 +1,170 @@
+<form
+  name="personForm"
+  #form="ngForm"
+  autocomplete="off"
+  (ngSubmit)="onSubmit(form)"
+>
+  <!--Employee id -->
+  <div class="form-group">
+    <input
+      type="text"
+      name="personId"
+      [(ngModel)]="personService.formData.personId"
+    />
+  </div>
+
+  <!--personName -->
+  <div class="form-group">
+    <label>person Name</label>
+    <input
+      name="personName"
+      #personName="ngModel"
+      [(ngModel)]="personService.formData.personName"
+      class="form-control"
+      place
+      holder="Enter person Name"
+      minlength="5"
+      maxlength="30"
+      required
+      [ngClass]="{ 'is-invalid': personName.touched && personName.invalid }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="personName.touched && personName.invalid"
+    >
+      <div *ngIf="personName.errors.required">person Name is Required</div>
+    </div>
+  </div>
+
+  <!--vender Id -->
+  <div class="form-group">
+    <label>vender Id</label>
+    <input
+      name="venderId"
+      #venderId="ngModel"
+      [(ngModel)]="personService.formData.venderId"
+      class="form-control"
+      place
+      holder="Enter vender Id"
+      minlength="2"
+      required
+      [ngClass]="{ 'is-invalid': venderId.touched && venderId.invalid }"
+    />
+    <div class="validation-error" *ngIf="venderId.touched && venderId.invalid">
+      <div *ngIf="venderId.errors.required">vender Id is Required</div>
+    </div>
+  </div>
+  
+  <!--department-->
+  <div class="form-group">
+    <label>department</label>
+    <input
+      name="department"
+      #department="ngModel"
+      [(ngModel)]="personService.formData.department"
+      class="form-control"
+      place
+      holder="Enter department Name"
+      maxlength="3"
+      required
+      [ngClass]="{ 'is-invalid': department.touched && department.invalid }"
+    />
+    <div class="validation-error" *ngIf="age.touched && department.invalid">
+      <div *ngIf="department.errors.required">department Name Required</div>
+    </div>
+  </div>
+
+  <!--email -->
+  <div class="form-group">
+    <label>Email </label>
+    <input
+      name="email" type="email"
+      #email="ngModel"
+      [(ngModel)]="personService.formData.email"
+      class="form-control"
+      place
+      holder="Enter email"
+      required
+      [ngClass]="{ 'is-invalid': email.touched && email.invalid }"
+    />
+    <div class="validation-error" *ngIf="email.touched && email.invalid">
+      <div *ngIf="email.errors.required">email is required</div>
+    </div>
+  </div>
+
+  <!--phone Number -->
+  <div class="form-group">
+    <label>phone Number</label>
+    <input
+      name="phoneNu"
+      #phoneNu="ngModel"
+      [(ngModel)]="personService.formData.phoneNu"
+      class="form-control"
+      place
+      holder="Enter phone Number"
+      minlength="10"
+      required
+      [ngClass]="{ 'is-invalid': phoneNu.touched && phoneNu.invalid }"
+    />
+    <div
+      class="validation-error"
+      *ngIf="phoneNu.touched && phoneNu.invalid"
+    >
+      <div *ngIf="phoneNu.errors.required">phone Number is Required</div>
+    </div>
+  </div>
+
+    <!--Location -->
+    <div class="form-group">
+        <label>Location</label>
+        <input
+          name="location"
+          #location="ngModel"
+          [(ngModel)]="venderService.formData.location"
+          class="form-control"
+          place
+          holder="Enter location"
+          minlength="5"
+          required
+          [ngClass]="{ 'is-invalid': location.touched && location.invalid }"
+        />
+        <div
+          class="validation-error"
+          *ngIf="location.touched && location.invalid"
+        >
+          <div *ngIf="location.errors.required">location is Required</div>
+        </div>
+      </div>
+
+    <!--isDeleted -->
+    <div class="form-group">
+      <label>is Deleted</label>
+      <input
+        name="isDeleted"
+        #isDeleted="ngModel"
+        [(ngModel)]="personService.formData.isDeleted"
+        class="form-control"
+        required
+        [ngClass]="{ 'is-invalid': isDeleted.touched && isDeleted.invalid }"
+      />
+      <div
+        class="validation-error"
+        *ngIf="isDeleted.touched && isDeleted.invalid"
+      >
+        <div *ngIf="isDeleted.errors.required">isDeleted is Required</div>
+      </div>
+    </div>
+
+  <!--Submit-->
+  <div class="form-group">
+    <button
+      type="submit"
+      [disabled]="!(form.valid && form.dirty)"
+      class="btn btn-lg btn-primary form-control"
+    >
+      SUBMIT
+    </button>
+  </div>
+</form>
+
+

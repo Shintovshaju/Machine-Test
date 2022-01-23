@@ -1,0 +1,42 @@
+<table class="table table-striped table-info">
+    <thead>
+      <tr>
+        <th>Vender ID</th>
+        <th>Vendor Name</th>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Address</th>
+        <th>Location</th>
+        <th>Pincode</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vendor of vendorService.vendors">
+        <td >{{ vendor.vendorId }}</td>
+        <td>{{ vendor.venderName }}</td>
+        <td>{{ vendor.productId }}</td>
+        <td>{{ vendor.productName }}</td>
+        <td>{{ vendor.address }}</td>
+        <td>{{ vendor.location }}</td>
+        <td>{{ vendor.pincode }}</td>
+        <td>
+          <button class="btn btn-info" (click)="updateVender(vendor.vendorId)">
+            EDIT
+          </button>
+        </td>
+        <td>
+          <a routerLink="/vendor">
+            <button class="fa fa-edit" (click)="populateForm(vendor)"></button
+          ></a>
+        </td>
+  
+        <td>
+          <button
+            class="fa fa-trash-o"
+            (click)="confirmDelete(vendor.vendorId)"
+          ></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
